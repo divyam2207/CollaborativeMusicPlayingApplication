@@ -17,7 +17,8 @@ def generate_random_room_code():
 # Create your models here.
 class Room(models.Model):
     host = models.CharField(max_length=50, unique=True)
-    code = models.CharField(max_length=8, unique=True, default="")
+    code = models.CharField(max_length=8, unique=True, default=generate_random_room_code)
     guests_can_pause = models.BooleanField(default=False, null=False)
     votes_to_skip = models.IntegerField(default=1, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    current_song = models.CharField(null=True,max_length=50)
